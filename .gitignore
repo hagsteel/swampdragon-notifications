@@ -1,0 +1,34 @@
+# Python bytecode:
+*.py[co]
+
+# Packaging files:
+*.egg*
+
+# Editor temp files:
+*.swp
+*~
+
+# Sphinx docs:
+build
+
+# SQLite3 database files:
+*.db
+*.sqlite
+*.sqlite3
+
+# Editor files
+.project
+.idea/*
+.tox/
+__MACOSX/*
+.ropeproject
+.coverage
+
+# Other
+.DS_Store
+bower_components/
+node_modules/
+static_root/
+idea/
+media/
+celerybeat-schedule

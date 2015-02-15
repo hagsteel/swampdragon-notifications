@@ -1,0 +1,8 @@
+{% extends 'swampdragon_notifications/emails/base_notification.html' %}
+
+{% block body %}
+You have a new notification.
+<hr/>
+{{ notification.body }}
+
+{% endblock body %}

@@ -1,0 +1,8 @@
+{
+    "name": "swampdragon-notifications",
+    "version": "0.1.0",
+    "description": "SwampDragon notifications",
+    "devDependencies": {
+        "swampdragon": "*"
+    }
+}

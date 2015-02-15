@@ -1,0 +1,53 @@
+{% load swampdragon_tags static %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Notification demo</title>
+</head>
+<body>
+
+<div>Users online: <span id="users-online">0</span></div>
+
+<div>
+    <button type="button" id="notify">Notify everyone but me</button>
+</div>
+<div>
+    <button type="button" id="notify-all">Notify everyone (including me)</button>
+</div>
+
+<div>
+    <label>
+        <input type="checkbox" id="enable-desktop-notifications">Enable desktop notifications
+    </label>
+</div>
+
+<div>Notifications:</div>
+<ul id="notifications">
+
+</ul>
+
+<div>You are currently signed in as: {{ user }}</div>
+<ul>
+    {% for user in object_list %}
+    <li>
+        <a href="{% url 'home' user.pk %}">{{user}}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% if user.is_authenticated %}
+<!-- Swamp dragon -->
+{% swampdragon_settings %}
+<script type="text/javascript" src="{% static 'swampdragon/js/dist/swampdragon.min.js' %}"></script>
+
+<!-- Swamp dragon notifications -->
+<script type="text/javascript" src="{% static 'js/dist/swampdragon-notifications.js' %}"></script>
+
+<!-- App -->
+<script type="text/javascript" src="{% static 'app.js' %}"></script>
+
+{% endif %}
+
+</body>
+</html>

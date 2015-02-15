@@ -1,0 +1,7 @@
+{% extends 'swampdragon_notifications/emails/base_notification.txt' %}
+
+{% block body %}
+You have a new notification.
+-----------------------
+{{ notification.body }}
+{% endblock body %}
