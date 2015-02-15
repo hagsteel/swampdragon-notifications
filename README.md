@@ -20,12 +20,21 @@ Notify your users in real time.
 
 # Installation
 
-    `pip install swampdragon-notifications`
+    pip install swampdragon-notifications
+
+Add the following to `INSTALLED_APPS`:
     
+    INSTALLED_APPS = [
+        ...
+        'swampdragon',
+        'swampdragon_auth',
+        'swampdragon_notifications',
+    ]
+
 
 # Setup
 
-    :::html
+
     {% load swampdragon_tags static %}
     ...
     <!-- Swamp dragon -->
@@ -40,7 +49,7 @@ Notify your users in real time.
 
 ## Get number of users online:
 
-    :::javascript
+    
     notifications.onlineCount(function (count) {
         console.log(count);
     });
@@ -50,7 +59,7 @@ Notify your users in real time.
 
 Triggered when a new user comes online or someone goes offline
 
-    :::javascript
+    
     notifications.onlineCountChange(function (count) {
         setUserCount(count);
     });
@@ -79,7 +88,7 @@ To trigger a desktop notifications:
 The following example setup will send both email notifications and realtime notifications.
 To disable the email notifications: remove `'swampdragon_notifications.backends.realtime_notifications.RealtimeNotification'` from `SWAMP_DRAGON_NOTIFICATION_BACKENDS`.
 
-    :::python
+    
     SWAMP_DRAGON_NOTIFICATION_BACKENDS = [
         'swampdragon_notifications.backends.realtime_notifications.RealtimeNotification',
         'swampdragon_notifications.backends.email_notifications.EmailNotification',
@@ -101,7 +110,7 @@ To disable the email notifications: remove `'swampdragon_notifications.backends.
 
 Create a file called subject_renderer.py in your project, and add a new function:
 
-    :::python
+    
     def foo_to_dict(notification, **kwargs):
         return {
             ...
@@ -118,7 +127,7 @@ The processor is a function, and takes a `notification` and `**kwargs` as argume
 
 Example processor:
 
-    :::python
+    
     def foo_processor(notification, **kwargs):
         return {
             'foo_id': notification.subject.pk,
@@ -133,7 +142,6 @@ Enable heart beat if you are using realtime notifications.
 This helps keep track on who is online.
 
 
-    :::python
     SWAMP_DRAGON_HEARTBEAT_ENABLED = True
     SWAMP_DRAGON_HEARTBEAT_FREQUENCY = 1000 * 60 * 5  # Five minutes
 
@@ -144,7 +152,6 @@ To customise notification, add `SWAMP_DRAGON_NOTIFICATIONS` to settings.
 This is a dictionary:
 
 
-    :::python
     SWAMP_DRAGON_NOTIFICATIONS = {
         'foo': {
             'processor': 'app.subject_renderer.foo_to_dict'
@@ -165,7 +172,6 @@ There are two notification backends: email and realtime.
 Set notification backends:
 
 
-    :::python
     SWAMP_DRAGON_NOTIFICATION_BACKENDS = [
         'swampdragon_notifications.backends.realtime_notifications.RealtimeNotification',
         'swampdragon_notifications.backends.email_notifications.EmailNotification',
@@ -190,7 +196,6 @@ Add a class `FooNotificationBackend`
 implement the function `def notify(notification):` in your custom notification backend
 
 
-    :::python
     class FooNotificationBackend(object):
         def notify(self, notification):
             pass
@@ -199,7 +204,6 @@ implement the function `def notify(notification):` in your custom notification b
 3.  Add the new backend to your settings
 
 
-    :::python
     SWAMP_DRAGON_NOTIFICATION_BACKENDS = [
         ...
         'myproj.foo_notification_backend.FooNotificationBackend'
