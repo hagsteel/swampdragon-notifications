@@ -32,6 +32,11 @@ Add the following to `INSTALLED_APPS`:
     ]
 
 
+Set the SwampDragon connection to:
+
+    SWAMP_DRAGON_CONNECTION = ('swampdragon_notifications.notification_connection.Connection', '/data')
+    
+
 # Setup
 
 
