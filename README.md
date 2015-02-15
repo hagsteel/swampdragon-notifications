@@ -1,5 +1,7 @@
 # SwampDragon notifications
 
+[ ![Codeship Status for jonashagstedt/swampdragon-notifications](https://codeship.com/projects/fc0d69b0-9763-0132-b800-6a66c6b56914/status?branch=master)](https://codeship.com/projects/63149)
+
 Notify your users in real time.
 
 **Note** Since notifications isn't always an essential part of a system, only signed in users receive notifications.  
