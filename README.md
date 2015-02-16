@@ -72,7 +72,7 @@ To disable desktop notifications: `notifications.disableDesktopNotifications();`
 
 To trigger a desktop notifications:
 
-    :::javascript
+
     var payload = {
         body:notification.some_value,
         icon: notification.icon // assuming an icon url is available,
