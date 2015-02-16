@@ -6,12 +6,6 @@ Notify your users in real time.
 
 **Note** Since notifications isn't always an essential part of a system, only signed in users receive notifications.  
 
-# TODO
-
-*  Document subject processor 
-*  Make sure subject processor doesn't have a default! (we can't anticipate this) 
-*  Write desktop notifications docs 
-
 
 # Prerequisites
 
