@@ -12,13 +12,16 @@ function disableDesktopNotifications() {
 }
 
 
-function showDesktopNotification(title, args) {
+function showDesktopNotification(title, args, onClick) {
     if (isEnabled === false) {
         return; // Desktop notifications are disabled, do nothing
     }
 
     if (window.Notification && Notification.permission === "granted") {
-        new Notification(title, args);
+        var notification = new Notification(title, args);
+        if (onClick) {
+            notification.onclick = onClick
+        }
     }
 }
 
