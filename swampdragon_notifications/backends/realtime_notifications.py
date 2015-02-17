@@ -23,5 +23,5 @@ class RealtimeNotification(object):
             channel = 'sd_notification_user_{}'.format(notification.user.pk)
             processor = get_processor(notification.type)
             if processor is None:
-                raise MissingProcessor('Missing notificaiton processor for "{}"'.format(notification.type))
+                raise MissingProcessor('Missing notification processor for "{}"'.format(notification.type))
             publish_data(channel, data=processor(notification, **get_processor_kwargs(notification.type)))
