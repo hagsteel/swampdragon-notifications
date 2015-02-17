@@ -14,5 +14,5 @@ DEFAULT_NOTIFICATIONS = {
 def notify_users(users, subject, notification_type):
     notifications = Notification.objects.new_notifications(users, subject, notification_type)
     backends = get_backends()
-    for backend in backends:
-        backend().notify(notifications)
+    for name, backend in backends:
+        backend(name).send_notifications(notifications, notification_type)

@@ -39,3 +39,48 @@ class Notification(TimeStampedModel):
         if hasattr(self.subject, 'get_absolute_url'):
             return self.subject.get_absolute_url()
         return None
+
+
+class NotificationSettingsManager(models.Manager):
+    def notification_settings(self, user):
+        settings, created = self.get_or_create(user=user)
+        return settings
+
+    def filter_notifications(self, notifications, notification_backend):
+        user_ids = [n.user.pk for n in notifications]
+        excluded = self.filter(user_id__in=user_ids, setting__backend=notification_backend, setting__enabled=False).values_list('user_id', flat=True)
+        return [n for n in notifications if n.user.pk not in excluded]
+
+
+class NotificationSettings(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='notification_settings')
+
+    objects = NotificationSettingsManager()
+
+    def __str__(self):
+        return 'Notification settings: {}'.format(self.user.__str__())
+
+    def __unicode__(self):
+        return self.__str__()
+
+
+class NotificationSettingManager(models.Manager):
+    def change(self, notification_settings, backend_type, enabled):
+        ns, created = self.get_or_create(notification_settings=notification_settings, backend=backend_type)
+        ns.enabled = enabled
+        ns.save()
+        return ns
+
+
+class NotificationSetting(models.Model):
+    notification_settings = models.ForeignKey(NotificationSettings, related_name='setting')
+    backend = models.CharField(max_length=100)
+    enabled = models.BooleanField(default=True)
+
+    objects = NotificationSettingManager()
+
+    def __str__(self):
+        return '{} {} enabled: {}'.format(self.notification_settings.user.__str__(), self.backend, self.enabled)
+
+    def __unicode__(self):
+        return self.__str__()

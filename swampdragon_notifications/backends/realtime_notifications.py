@@ -2,10 +2,8 @@ from django.conf import settings
 from swampdragon.pubsub_providers.data_publisher import publish_data
 from ..online import user_manager
 from ..subject_processors import get_processor
-
-
-class MissingProcessor(Exception):
-    pass
+from .backends import MissingProcessor
+from .base_backend import BaseBackend
 
 
 def get_processor_kwargs(notification_type):
@@ -14,8 +12,8 @@ def get_processor_kwargs(notification_type):
     return settings.SWAMP_DRAGON_NOTIFICATIONS.get(notification_type)
 
 
-class RealtimeNotification(object):
-    def notify(self, notifications):
+class RealtimeNotification(BaseBackend):
+    def notify(self, notifications, **processor_kwargs):
         user_ids = user_manager.get_users()
         online_notifications = [n for n in notifications if n.user_id in user_ids]
 
@@ -24,4 +22,4 @@ class RealtimeNotification(object):
             processor = get_processor(notification.type)
             if processor is None:
                 raise MissingProcessor('Missing notification processor for "{}"'.format(notification.type))
-            publish_data(channel, data=processor(notification, **get_processor_kwargs(notification.type)))
+            publish_data(channel, data=processor(notification, **processor_kwargs))

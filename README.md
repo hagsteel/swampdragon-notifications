@@ -172,8 +172,8 @@ Set notification backends:
 
 
     SWAMP_DRAGON_NOTIFICATION_BACKENDS = [
-        'swampdragon_notifications.backends.realtime_notifications.RealtimeNotification',
-        'swampdragon_notifications.backends.email_notifications.EmailNotification',
+        ('realtime', 'swampdragon_notifications.backends.realtime_notifications.RealtimeNotification'),
+        ('email', 'swampdragon_notifications.backends.email_notifications.EmailNotification'),
     ]
 
 `'swampdragon_notifications.backends.realtime_notifications.RealtimeNotification'` is enabled by default.
@@ -195,7 +195,9 @@ Add a class `FooNotificationBackend`
 implement the function `def notify(notification):` in your custom notification backend
 
 
-    class FooNotificationBackend(object):
+    from swampdragon_notifications.backends.base_backend import BaseBackend
+
+    class FooNotificationBackend(BaseBackend):
         def notify(self, notification):
             pass
             
@@ -205,5 +207,5 @@ implement the function `def notify(notification):` in your custom notification b
 
     SWAMP_DRAGON_NOTIFICATION_BACKENDS = [
         ...
-        'myproj.foo_notification_backend.FooNotificationBackend'
+        ('foo', 'myproj.foo_notification_backend.FooNotificationBackend'),
     ]

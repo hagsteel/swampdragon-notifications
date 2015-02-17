@@ -8,7 +8,7 @@ NOTIFICATIONS_SETTINGS = getattr(settings, 'SWAMP_DRAGON_NOTIFICATIONS', DEFAULT
 
 
 def send_notification_email(notification):
-    notification_settings = NOTIFICATIONS_SETTINGS[notification.type]
+    notification_settings = NOTIFICATIONS_SETTINGS.get(notification.type) or {}
     subject = notification_settings.get('subject') or 'Notification'
     template = notification_settings.get('template') or 'default_notification'
     email = notification.user.email

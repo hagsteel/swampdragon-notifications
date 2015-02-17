@@ -5,8 +5,12 @@ except ImportError:
     from django.utils.module_loading import import_string
 
 
+class MissingProcessor(Exception):
+    pass
+
+
 DEFAULT_NOTIFICATION_BACKENDS = [
-    'swampdragon_notifications.backends.realtime_notifications.RealtimeNotification',
+    ('realtime', 'swampdragon_notifications.backends.realtime_notifications.RealtimeNotification'),
     # 'swampdragon_notifications.backends.email_notifications.EmailNotification',
 ]
 
@@ -23,6 +27,8 @@ def get_backends():
         return backends
 
     backend_imports = getattr(settings, 'SWAMP_DRAGON_NOTIFICATION_BACKENDS', DEFAULT_NOTIFICATION_BACKENDS)
-    for bi in backend_imports:
-        backends.append(load(bi))
+    for name, bi in backend_imports:
+        backends.append(
+            (name, load(bi))
+        )
     return backends
