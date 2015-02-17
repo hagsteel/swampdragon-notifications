@@ -71,6 +71,10 @@ class NotificationSettingManager(models.Manager):
         ns.save()
         return ns
 
+    def get_or_default(self, notification_settings, backend):
+        notification_setting, created = self.get_or_create(notification_settings=notification_settings, backend=backend)
+        return notification_setting
+
 
 class NotificationSetting(models.Model):
     notification_settings = models.ForeignKey(NotificationSettings, related_name='setting')
