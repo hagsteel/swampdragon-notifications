@@ -44,7 +44,7 @@ class NotificationTest(TestCase):
 class RealtimeNotificationTest(DragonTestCase):
     def setUp(self):
         route_handler.register(NotificationRouter)
-        backends.backends = [RealtimeNotification]
+        backends.backends = [('realtime', RealtimeNotification)]
         user_manager.clear()
         self.user_a = User.objects.create(first_name='Veronica', username='veronica')
         self.user_b = User.objects.create(first_name='Jonas', username='jonas')
