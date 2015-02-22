@@ -32,3 +32,4 @@ static_root/
 idea/
 media/
 celerybeat-schedule
+dist/swampdragon-notifications-*
