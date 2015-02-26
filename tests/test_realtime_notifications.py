@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from swampdragon import route_handler
 from swampdragon.tests.dragon_test_case import DragonTestCase
 from swampdragon.tests.mock_connection import TestConnection

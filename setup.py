@@ -7,7 +7,7 @@ def read(fname):
 
 setup(
     name="swampdragon-notifications",
-    version="0.1.1.1",
+    version="0.1.2",
     author="Jonas Hagstedt",
     author_email="hagstedt@gmail.com",
     description=("SwampDragon notifications "),

@@ -11,8 +11,8 @@ DEFAULT_NOTIFICATIONS = {
 }
 
 
-def notify_users(users, subject, notification_type):
+def notify_users(users, subject, notification_type, **kwargs):
     notifications = Notification.objects.new_notifications(users, subject, notification_type)
     backends = get_backends()
     for name, backend in backends:
-        backend(name).send_notifications(notifications, notification_type)
+        backend(name).send_notifications(notifications, notification_type, **kwargs)
