@@ -28,9 +28,11 @@ document.getElementById("notify").addEventListener("click", function () {
 });
 
 document.getElementById("notify-all").addEventListener("click", function () {
-    swampdragon.callRouter('notify_everyone', 'notifier', {name: 'foo'}, function () {
+    swampdragon.ready(function () {
+        swampdragon.callRouter('notify_everyone', 'notifier', {name: 'foo'}, function () {
 
-    })
+        })
+    });
 });
 
 document.getElementById("enable-desktop-notifications").addEventListener("change", function (e) {
@@ -48,5 +50,5 @@ function addNotification(notification) {
     var notificationsList = document.getElementById("notifications");
     notificationsList.insertBefore(li, notificationsList.firstChild);
 
-    notifications.desktopNotification('New foo', {body:notification.name, icon: notification.icon, tag: 'foo'});
+    notifications.desktopNotification('New foo', {body: notification.name, icon: notification.icon, tag: 'foo'});
 }

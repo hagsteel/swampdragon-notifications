@@ -112,8 +112,8 @@ SWAMP_DRAGON = {
 
 
 SWAMP_DRAGON_NOTIFICATION_BACKENDS = [
-    'swampdragon_notifications.backends.realtime_notifications.RealtimeNotification',
-    'swampdragon_notifications.backends.email_notifications.EmailNotification',
+    ('realtime', 'swampdragon_notifications.backends.realtime_notifications.RealtimeNotification'),
+    # ('email', 'swampdragon_notifications.backends.email_notifications.EmailNotification'),
 ]
 
 

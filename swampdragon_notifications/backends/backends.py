@@ -11,7 +11,7 @@ class MissingProcessor(Exception):
 
 DEFAULT_NOTIFICATION_BACKENDS = [
     ('realtime', 'swampdragon_notifications.backends.realtime_notifications.RealtimeNotification'),
-    # 'swampdragon_notifications.backends.email_notifications.EmailNotification',
+    ('email', 'swampdragon_notifications.backends.email_notifications.EmailNotification'),
 ]
 
 

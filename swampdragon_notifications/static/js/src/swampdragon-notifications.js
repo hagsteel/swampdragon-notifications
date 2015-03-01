@@ -4,7 +4,7 @@ var onlineCountChangeCallbacks = [];
 var notificationCallbacks = [];
 
 
-swampdragon.ready(function () {
+swampdragon.open(function () {
     swampdragon.subscribe('swampdragon-notifications', 'notifications', {}, function () { });
     swampdragon.subscribe('swampdragon-online', 'users-online', {}, function () { });
 });

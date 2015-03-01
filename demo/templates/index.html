@@ -23,9 +23,9 @@
 </div>
 
 <div>Notifications:</div>
-<ul id="notifications">
+<ol id="notifications">
 
-</ul>
+</ol>
 
 <div>You are currently signed in as: {{ user }}</div>
 <ul>
@@ -39,13 +39,13 @@
 {% if user.is_authenticated %}
 <!-- Swamp dragon -->
 {% swampdragon_settings %}
-<script type="text/javascript" src="{% static 'swampdragon/js/dist/swampdragon.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'swampdragon/js/dist/swampdragon.min.js?v=1' %}"></script>
 
 <!-- Swamp dragon notifications -->
-<script type="text/javascript" src="{% static 'js/dist/swampdragon-notifications.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/dist/swampdragon-notifications.js?v=1' %}"></script>
 
 <!-- App -->
-<script type="text/javascript" src="{% static 'app.js' %}"></script>
+<script type="text/javascript" src="{% static 'app.js?v=1' %}"></script>
 
 {% endif %}
 
