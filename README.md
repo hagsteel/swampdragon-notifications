@@ -131,7 +131,7 @@ Example processor:
         return {
             'foo_id': notification.subject.pk,
             'timestamp': now(),
-            'extra_value:' kwargs.get('extra_value')
+            'extra_value': kwargs.get('extra_value')
         }
 
 
