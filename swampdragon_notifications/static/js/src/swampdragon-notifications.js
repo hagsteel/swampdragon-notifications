@@ -11,17 +11,17 @@ swampdragon.open(function () {
 
 
 swampdragon.onChannelMessage(function (channels, message, data) {
-    var channel = null;
-    for (var i = 0; i < channels.length; i += 1) {
+    var i, j, channel = null;
+    for (i = 0; i < channels.length; i += 1) {
         channel = channels[i];
         if (channel === "users-online") {
-            for (var j = 0; j < onlineCountChangeCallbacks.length; j += 1) {
+            for (j = 0; j < onlineCountChangeCallbacks.length; j += 1) {
                 onlineCountChangeCallbacks[j](message.data.users_online);
             }
         }
 
         if (channel === "notifications") {
-            for (var j = 0; j < notificationCallbacks.length; j += 1) {
+            for (j = 0; j < notificationCallbacks.length; j += 1) {
                 notificationCallbacks[j](message.data);
             }
         }

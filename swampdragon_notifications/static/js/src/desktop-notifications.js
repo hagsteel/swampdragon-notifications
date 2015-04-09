@@ -1,7 +1,12 @@
 var isEnabled = false;
 
 function enableDesktopNotifications() {
-    Notification.requestPermission(function (status) {
+    if (window.Notification === undefined) {
+        isEnabled = false;
+        return;
+    }
+
+    window.Notification.requestPermission(function (status) {
         isEnabled = status === "granted";
     });
 }
@@ -17,7 +22,7 @@ function showDesktopNotification(title, args, onClick) {
         return; // Desktop notifications are disabled, do nothing
     }
 
-    if (window.Notification && Notification.permission === "granted") {
+    if (window.Notification && window.Notification.permission === "granted") {
         var notification = new Notification(title, args);
         if (onClick) {
             notification.onclick = onClick
