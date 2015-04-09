@@ -53,7 +53,7 @@ swampdragon.open(function () {
 });
 
 
-swampdragon.onChannelMessage(function (channels, message, data) {
+swampdragon.onChannelMessage(function (channels, message) {
     var i, j, channel = null;
     for (i = 0; i < channels.length; i += 1) {
         channel = channels[i];
