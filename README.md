@@ -97,9 +97,9 @@ To disable the email notifications: remove `'swampdragon_notifications.backends.
     SWAMP_DRAGON_NOTIFICATIONS = {
         'foo': {
             'processor': 'app.subject_renderer.foo_to_dict',
-            'icon': 'http://placekitten.com/g/64/64'
+            'icon': 'http://placekitten.com/g/64/64',
             'subject': 'A new foo',
-            'template': 'new_foo_notification'
+            'template': 'new_foo_notification',
         }
     }
     
@@ -131,7 +131,7 @@ Example processor:
         return {
             'foo_id': notification.subject.pk,
             'timestamp': now(),
-            'extra_value:' kwargs.get('extra_value')
+            'extra_value': kwargs.get('extra_value')
         }
 
 
