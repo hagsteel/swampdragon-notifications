@@ -43,11 +43,12 @@ def pytest_configure():
             'django.contrib.auth.hashers.MD5PasswordHasher',
             'django.contrib.auth.hashers.CryptPasswordHasher',
         ),
-        SWAMP_DRAGON_NOTIFICATIONS = {
+        SWAMP_DRAGON_NOTIFICATIONS={
             'foo': {
                 'processor': 'tests.subject_renderers.foo_to_dict'
             }
-        }
+        },
+        SWAMPDRAGON_TESTMODE=True
     )
 
     try:

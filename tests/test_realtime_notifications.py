@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
-from django.test import TestCase, override_settings
+from django.test import TestCase
 from swampdragon import route_handler
-from swampdragon.tests.dragon_test_case import DragonTestCase
-from swampdragon.tests.mock_connection import TestConnection
+from swampdragon.connections.mock_connection import TestConnection
+from swampdragon.testing.dragon_testcase import DragonTestCase
 from swampdragon_notifications.backends import backends
 from swampdragon_notifications.backends.realtime_notifications import RealtimeNotification
 from swampdragon_notifications.models import Notification
