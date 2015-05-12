@@ -85,7 +85,7 @@ To trigger a desktop notifications:
 # Example setup (settings.py)
 
 The following example setup will send both email notifications and realtime notifications.
-To disable the email notifications: remove `'swampdragon_notifications.backends.realtime_notifications.RealtimeNotification'` from `SWAMP_DRAGON_NOTIFICATION_BACKENDS`.
+To disable the email notifications: remove `'swampdragon_notifications.backends.email_notifications.EmailNotification'` from `SWAMP_DRAGON_NOTIFICATION_BACKENDS`.
 
     
     SWAMP_DRAGON_NOTIFICATION_BACKENDS = [
