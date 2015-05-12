@@ -21,6 +21,7 @@ setup(
         "Django >= 1.6, < 1.8",
         "django-model-utils",
         "swampdragon",
+        "swampdragon-auth"
     ],
     classifiers=[
         "Development Status :: 4 - Beta",
