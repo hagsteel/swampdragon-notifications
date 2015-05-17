@@ -11,7 +11,6 @@ WINDOW_SIZE = getattr(
     'SWAMP_DRAGON_HEARTBEAT_FREQUENCY',
     DEFAULT_WINDOW_SIZE)
 WINDOW_SIZE = int(WINDOW_SIZE / 1000)  # Convert from ms to seconds
-print(WINDOW_SIZE)
 USER_LIST = 'users_online'
 CLEANUP_FREQUENCY = WINDOW_SIZE  # Cleanup every five minutes
 CLEANUP_KEY = 'sd_online_ct'
