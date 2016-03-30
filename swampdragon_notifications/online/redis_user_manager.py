@@ -1,10 +1,16 @@
+from django.conf import settings
 from swampdragon.pubsub_providers.redis_publisher import get_redis_cli
 from swampdragon.pubsub_providers.data_publisher import publish_data
 from time import time
 from tornado.ioloop import PeriodicCallback
 
 ONLINE_USERS = 'online_users'
-WINDOW_SIZE = 60 * 5  # Five minutes
+DEFAULT_WINDOW_SIZE = 60 * 5 * 1000  # Five minutes
+WINDOW_SIZE = getattr(
+    settings,
+    'SWAMP_DRAGON_HEARTBEAT_FREQUENCY',
+    DEFAULT_WINDOW_SIZE)
+WINDOW_SIZE = int(WINDOW_SIZE / 1000)  # Convert from ms to seconds
 USER_LIST = 'users_online'
 CLEANUP_FREQUENCY = WINDOW_SIZE  # Cleanup every five minutes
 CLEANUP_KEY = 'sd_online_ct'
